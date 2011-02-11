@@ -1,6 +1,6 @@
-class CreateFabricantes < ActiveRecord::Migration
+class CreateMarcas < ActiveRecord::Migration
   def self.up
-    create_table :fabricantes do |t|
+    create_table :marcas do |t|
       t.integer :codigo
       t.string :nome
 
@@ -9,6 +9,6 @@ class CreateFabricantes < ActiveRecord::Migration
   end
 
   def self.down
-    drop_table :fabricantes
+    drop_table :marcas
   end
 end

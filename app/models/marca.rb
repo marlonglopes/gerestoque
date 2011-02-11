@@ -1,4 +1,4 @@
-class Fabricante < ActiveRecord::Base
+class Marca < ActiveRecord::Base
 
 	has_many :items , :dependent => :destroy
 	has_many :produtos, :through=>:items , :dependent => :destroy

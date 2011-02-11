@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Codigo:</b>
+  <%= @marca.codigo %>
+</p>
+
+<p>
+  <b>Nome:</b>
+  <%= @marca.nome %>
+</p>
+
+
+<%= link_to 'Edit', edit_marca_path(@marca) %> |
+<%= link_to 'Back', marcas_path %>

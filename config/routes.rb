@@ -15,7 +15,7 @@ Gerestoque::Application.routes.draw do
 
   resources :items
 
-  resources :fabricantes
+  resources :marcas
 
   resources :produtos
   

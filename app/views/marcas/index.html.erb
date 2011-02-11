@@ -1,0 +1,25 @@
+<h1>Marcas</h1>
+
+<table>
+  <tr>
+    <th>Código</th>
+    <th>Nome</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @marcas.each do |marca| %>
+  <tr>
+    <td><%= marca.codigo %></td>
+    <td><%= marca.nome %></td>
+    <td><%= link_to 'Show', marca %></td>
+    <td><%= link_to 'Edit', edit_marca_path(fabricante) %></td>
+    <td><%= link_to 'Destroy', marca, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'Nova Marca', new_marca_path %>
