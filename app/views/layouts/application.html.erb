@@ -1,14 +1,41 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Gerestoque</title>
-  <%= stylesheet_link_tag :all %>
-  <%= javascript_include_tag :defaults %>
-  <%= csrf_meta_tag %>
-</head>
-<body>
+  <head>
 
-<%= yield %>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
 
-</body>
+    <title><%= content_for?(:title) ? yield(:title) : "Untitled" %></title>
+
+		<%= render 'layouts/stylesheets' %>
+
+		<%= csrf_meta_tag %>
+
+		<%= yield(:head) %>
+
+  </head>
+  <body>
+
+    <div class="container">
+
+		<%=render 'layouts/header' %>
+
+		<section class="round">
+
+		   <% flash.each do |name, msg| %>
+		     <%= content_tag :div, msg, :class => "#{name}" %>
+		   <% end %>
+
+		   <%= content_tag :h1, yield(:title) if show_title? %>
+	      <%= yield %>
+		</section>
+
+		<%=render 'layouts/footer' %>
+
+		<%=debug params %>
+
+    </div>
+
+		<%= javascript_include_tag :all %>
+
+  </body>
 </html>
