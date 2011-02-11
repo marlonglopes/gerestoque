@@ -1,8 +1,9 @@
-<h1>Listing items</h1>
+<h1>Items</h1>
 
 <table>
   <tr>
-    <th>Produto</th>
+    <th>Código</th>
+    <th>Descrição</th>    
     <th>Fabricante</th>
     <th>parecer</th>    
     <th></th>
@@ -12,6 +13,7 @@
 
 <% @items.each do |item| %>
   <tr>
+    <td><%= item.produto.codigo %></td>
     <td><%= item.produto.descricao %></td>
     <td><%= item.fabricante.nome %></td>
     <td><%= item.parecer.descricao%></td>
