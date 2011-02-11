@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Codigo:</b>
+  <%= @parecer.codigo %>
+</p>
+
+<p>
+  <b>Descricao:</b>
+  <%= @parecer.descricao %>
+</p>
+
+
+<%= link_to 'Edit', edit_parecer_path(@parecer) %> |
+<%= link_to 'Back', parecers_path %>
