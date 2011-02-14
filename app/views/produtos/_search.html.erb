@@ -2,6 +2,7 @@
 
 		<%= form_for @search do |f| %>
 
+
 		  <p>
 			<%= f.label :grupo_id_equals, "Grupo:" %><br />
 			<%= f.select  "grupo_id_equals",  Grupo.order("descricao").scoped.map { |g| [ g.descricao, g.id ]}, {:include_blank => ''}, :class=>"clearme" %>

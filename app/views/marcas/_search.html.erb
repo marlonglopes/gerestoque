@@ -1,0 +1,15 @@
+<div id="search" >
+
+		<%= form_for @search do |f| %>
+
+		 <p>
+			<%= f.label :nome_contains, "Descrição:" %><br />
+			<%= f.text_field :nome_contains, :class=>"clearme", :placeholder=>"Executa pesquisa no campo descrição" %>
+		 </p>
+
+
+		<%= f.submit  "Executar Pesquisa" %> - <%=f.submit  "Limpar Campos", :type=>"reset", :class=>"reset_search", :id=>"reset_search"  %> <br /> 
+
+		<% end %>
+	
+</div>

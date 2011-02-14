@@ -3,11 +3,8 @@ class ItemsController < ApplicationController
   # GET /items.xml
   def index
 
-	@grupo=Grupo.find(params[:grupo_id])
-	@produto=@grupo.produtos.find(params[:produto_id])
-	@items=@produto.items.all
-
-#    @items = Item.scoped.paginate(:page => params[:page], :per_page=>20)
+ 	 @search = Item.includes(:produto).search(params[:search])
+	 @items = @search.order("id").scoped.paginate(:page => params[:page], :per_page=>20)
 
     respond_to do |format|
       format.html # index.html.erb

@@ -2,20 +2,15 @@ class ProdutosController < ApplicationController
   # GET /produtos
   # GET /produtos.xml
   def index
-	@produtos=[]
 
-	begin
-	@grupo=Grupo.find(params[:grupo_id])
-	@produtos = @grupo.produtos.search(params[:search])
-#	@produtos = @search.order("descricao").paginate(:page => params[:page], :per_page=>20)
-#    @produtos = Produto.scoped.paginate(:page => params[:page], :per_page=>20)
+
+	 @search = Produto.search(params[:search])
+	 @produtos = @search.order("id").paginate(:page => params[:page], :per_page=>20)
 
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @produtos }
     end
-	rescue
-	end
 
   end
 

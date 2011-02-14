@@ -1,5 +1,6 @@
 <h1>Produtos</h1>
 
+<%=render 'search'%>
 
 <hr />
 
@@ -16,11 +17,11 @@
 <% @produtos.each do |produto| %>
   <tr>
     <td><%= produto.id %></td>
-    <td><%= link_to produto.descricao, grupo_produto_items_path(produto.grupo,produto) %></td>
+    <td><%= produto.descricao %></td>
     <td><%= produto.grupo.descricao %></td>
-    <td><%= link_to 'Show', grupo_produto_path(produto.grupo,produto	) %></td>
-    <td><%= link_to 'Edit', edit_grupo_produto_path(produto.grupo,produto) %></td>
-    <td><%= link_to 'Destroy', grupo_produto_path(produto.grupo,produto), :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= link_to 'Show', grupo_path(produto.grupo,produto	) %></td>
+    <td><%= link_to 'Edit', edit_grupo_path(produto.grupo,produto) %></td>
+    <td><%= link_to 'Destroy', grupo_path(produto.grupo,produto), :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
 </table>
@@ -29,4 +30,4 @@
 
 <br />
 
-<%= link_to 'New Produto', new_grupo_produto_path %>
+<%= link_to 'New Produto', new_grupo_path %>

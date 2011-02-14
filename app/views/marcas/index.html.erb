@@ -1,9 +1,13 @@
 <h1>Marcas</h1>
 
+<%= render 'search' %>
+
+<hr />
+
 <table>
   <tr>
     <th>Código</th>
-    <th>Nome</th>
+    <th>Marca</th>
     <th></th>
     <th></th>
     <th></th>
@@ -11,14 +15,16 @@
 
 <% @marcas.each do |marca| %>
   <tr>
-    <td><%= marca.codigo %></td>
+    <td><%= marca.id %></td>
     <td><%= marca.nome %></td>
     <td><%= link_to 'Show', marca %></td>
-    <td><%= link_to 'Edit', edit_marca_path(fabricante) %></td>
+    <td><%= link_to 'Edit', edit_marca_path(marca) %></td>
     <td><%= link_to 'Destroy', marca, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
 </table>
+
+<%= will_paginate @marcas %>	
 
 <br />
 

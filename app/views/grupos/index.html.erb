@@ -15,7 +15,7 @@
 <% @grupos.each do |grupo| %>
   <tr>
     <td><%= grupo.id %></td>
-    <td><%= link_to grupo.descricao, grupo_produtos_path(grupo) %></td>
+    <td><%= grupo.descricao %></td>
     <td><%= link_to 'Show', grupo %></td>
     <td><%= link_to 'Edit', edit_grupo_path(grupo) %></td>
     <td><%= link_to 'Destroy', grupo, :confirm => 'Are you sure?', :method => :delete %></td>

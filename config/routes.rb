@@ -1,10 +1,8 @@
 Gerestoque::Application.routes.draw do
 
-  resources :grupos do
-  	resources :produtos do
-		  resources :items
-  	end
-  end
+  resources :grupos
+  resources :produtos
+  resources :items
 
   resources :parecers
   resources :sessions

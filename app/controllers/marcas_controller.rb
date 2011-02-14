@@ -2,7 +2,9 @@ class MarcasController < ApplicationController
   # GET /marcas
   # GET /marcas.xml
   def index
-    @marcas = Marca.scoped.paginate(:page => params[:page], :per_page=>20)
+
+	 @search = Marca.search(params[:search])
+	 @marcas = @search.order("id").scoped.paginate(:page => params[:page], :per_page=>20)
 
     respond_to do |format|
       format.html # index.html.erb
