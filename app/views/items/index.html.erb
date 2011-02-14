@@ -17,18 +17,18 @@
     <td><%= item.produto.descricao %></td>
     <td><%= item.marca.nome %></td>
     <td><%= item.parecer.descricao%></td>
-    <td><%= link_to 'Show', item %></td>
-    <td><%= link_to 'Edit', edit_item_path(item) %></td>
-    <td><%= link_to 'Destroy', item, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= link_to 'Show', grupo_produto_items_path %></td>
+    <td><%= link_to 'Edit', edit_grupo_produto_item_path(item.produto.grupo,item.produto,item) %></td>
+    <td><%= link_to 'Destroy', grupo_produto_item_path(item.produto.grupo,item.produto,item), :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
 </table>
 
-<%=will_paginate @items %>
+
 
 <br />
 
-<%= link_to 'New Item', new_item_path %>
+<%= link_to 'New Item', new_grupo_produto_item_path %>
 
 
 

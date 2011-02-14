@@ -1,13 +1,15 @@
 Gerestoque::Application.routes.draw do
 
   resources :grupos do
-  	resources :produtos
+  	resources :produtos do
+		  resources :items
+  	end
   end
 
   resources :parecers
   resources :sessions
   resources :users
-  resources :items
+
   resources :marcas
 
   match 'user/edit' => 'users#edit', :as => :edit_current_user

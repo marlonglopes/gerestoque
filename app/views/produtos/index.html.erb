@@ -16,7 +16,7 @@
 <% @produtos.each do |produto| %>
   <tr>
     <td><%= produto.id %></td>
-    <td><%= produto.descricao %></td>
+    <td><%= link_to produto.descricao, grupo_produto_items_path(produto.grupo,produto) %></td>
     <td><%= produto.grupo.descricao %></td>
     <td><%= link_to 'Show', grupo_produto_path(produto.grupo,produto	) %></td>
     <td><%= link_to 'Edit', edit_grupo_produto_path(produto.grupo,produto) %></td>
