@@ -1,5 +1,5 @@
 class Grupo < ActiveRecord::Base
 
-	has_many :produtos
+	has_many :produtos, :dependent => :destroy
 
 end

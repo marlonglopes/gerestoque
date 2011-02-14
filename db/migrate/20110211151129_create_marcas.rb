@@ -1,7 +1,7 @@
 class CreateMarcas < ActiveRecord::Migration
   def self.up
     create_table :marcas do |t|
-      t.integer :codigo
+#      t.integer :codigo
       t.string :nome
 
       t.timestamps

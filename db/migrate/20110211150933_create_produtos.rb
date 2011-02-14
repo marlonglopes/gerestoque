@@ -1,7 +1,7 @@
 class CreateProdutos < ActiveRecord::Migration
   def self.up
     create_table :produtos do |t|
-      t.integer :codigo
+#      t.integer :codigo
       t.string :descricao
 
       t.timestamps

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110214152216) do
+ActiveRecord::Schema.define(:version => 20110214155740) do
 
   create_table "grupos", :force => true do |t|
     t.integer  "codigo"
@@ -47,7 +47,10 @@ ActiveRecord::Schema.define(:version => 20110214152216) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "grupo_id"
+    t.integer  "marca_id"
   end
+
+  add_index "produtos", ["codigo"], :name => "index_produtos_on_codigo", :unique => true
 
   create_table "users", :force => true do |t|
     t.string   "username"
