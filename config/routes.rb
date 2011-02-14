@@ -1,4 +1,6 @@
 Gerestoque::Application.routes.draw do
+  resources :grupos
+
   resources :parecers
 
   match 'user/edit' => 'users#edit', :as => :edit_current_user
