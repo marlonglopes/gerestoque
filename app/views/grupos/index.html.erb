@@ -1,5 +1,8 @@
 <h1>Listing grupos</h1>
 
+<%=render 'search'%>
+<hr />
+
 <table>
   <tr>
     <th>Codigo</th>
@@ -11,8 +14,8 @@
 
 <% @grupos.each do |grupo| %>
   <tr>
-    <td><%= grupo.codigo %></td>
-    <td><%= grupo.descricao %></td>
+    <td><%= grupo.id %></td>
+    <td><%= link_to grupo.descricao, grupo_produtos_path(grupo) %></td>
     <td><%= link_to 'Show', grupo %></td>
     <td><%= link_to 'Edit', edit_grupo_path(grupo) %></td>
     <td><%= link_to 'Destroy', grupo, :confirm => 'Are you sure?', :method => :delete %></td>

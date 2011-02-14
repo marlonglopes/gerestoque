@@ -13,7 +13,7 @@
 
 <% @items.each do |item| %>
   <tr>
-    <td><%= item.produto.codigo %></td>
+    <td><%= item.produto.id %></td>
     <td><%= item.produto.descricao %></td>
     <td><%= item.marca.nome %></td>
     <td><%= item.parecer.descricao%></td>
@@ -24,6 +24,11 @@
 <% end %>
 </table>
 
+<%=will_paginate @items %>
+
 <br />
 
 <%= link_to 'New Item', new_item_path %>
+
+
+

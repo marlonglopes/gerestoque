@@ -2,7 +2,7 @@ class ParecersController < ApplicationController
   # GET /parecers
   # GET /parecers.xml
   def index
-    @parecers = Parecer.all
+    @parecers = Parecer.scoped.paginate(:page => params[:page], :per_page=>20)
 
     respond_to do |format|
       format.html # index.html.erb

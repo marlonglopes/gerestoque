@@ -11,7 +11,7 @@
 
 <% @parecers.each do |parecer| %>
   <tr>
-    <td><%= parecer.codigo %></td>
+    <td><%= parecer.id %></td>
     <td><%= parecer.descricao %></td>
     <td><%= link_to 'Show', parecer %></td>
     <td><%= link_to 'Edit', edit_parecer_path(parecer) %></td>

@@ -2,7 +2,8 @@ class GruposController < ApplicationController
   # GET /grupos
   # GET /grupos.xml
   def index
-    @grupos = Grupo.all
+	 @search = Grupo.search(params[:search])
+	 @grupos = @search.order("id").paginate(:page => params[:page], :per_page=>20)
 
     respond_to do |format|
       format.html # index.html.erb
