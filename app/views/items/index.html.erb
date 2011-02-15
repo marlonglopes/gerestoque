@@ -3,6 +3,12 @@
 <%= render 'search' %>
 
 <hr />
+
+
+<br />
+<%= will_paginate @items %>	
+<br />
+
 <table>
   <tr>
     <th>Código</th>
@@ -35,8 +41,10 @@
 <% end %>
 </table>
 
+<br />
 <%= will_paginate @items %>	
-
+<br />
+<%= page_entries_info @posts %> 
 <br />
 
 <% if logged_in? and current_user.admin? %>

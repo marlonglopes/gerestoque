@@ -15,10 +15,11 @@ class ItemsController < ApplicationController
 	 @items = @search.order("id").scoped.paginate(:page => params[:page], :per_page=>20)
 	end
 
-
     respond_to do |format|
       format.html # index.html.erb
-      format.xml  { render :xml => @items }
+      format.xml  { render :xml => @items.to_xml(:include => {:parecer=>{}, :marca=>{},:produto => {:include => :grupo}})}
+      
+      
     end
   end
 
