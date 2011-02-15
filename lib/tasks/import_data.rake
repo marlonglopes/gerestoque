@@ -5,6 +5,19 @@ require 'soap/wsdlDriver'
 require 'faker'
 
 	namespace :db do
+		desc "Fill database with data"
+			task :importa_tudo => :environment do
+				Rake::Task['db:reset'].invoke
+
+				import_grupos_txt
+				import_marcas_txt
+				import_produtos_txt
+				cria_items
+		end
+	end
+
+
+	namespace :db do
 		desc "Fill database with grupo data"
 			task :importa_grupos => :environment do
 				import_grupos_txt
