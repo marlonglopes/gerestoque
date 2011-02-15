@@ -49,7 +49,7 @@ class ParecersController < ApplicationController
 
     respond_to do |format|
       if @parecer.save
-        format.html { redirect_to(@parecer, :notice => 'Parecer was successfully created.') }
+        format.html { redirect_to(@parecer, :notice => 'Parecer criado com sucesso.') }
         format.xml  { render :xml => @parecer, :status => :created, :location => @parecer }
       else
         format.html { render :action => "new" }
@@ -65,7 +65,7 @@ class ParecersController < ApplicationController
 
     respond_to do |format|
       if @parecer.update_attributes(params[:parecer])
-        format.html { redirect_to(@parecer, :notice => 'Parecer was successfully updated.') }
+        format.html { redirect_to(@parecer, :notice => 'Parecer alterado com sucesso.') }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }

@@ -49,7 +49,7 @@ class GruposController < ApplicationController
 
     respond_to do |format|
       if @grupo.save
-        format.html { redirect_to(@grupo, :notice => 'Grupo was successfully created.') }
+        format.html { redirect_to(@grupo, :notice => 'Grupo criado com sucesso.') }
         format.xml  { render :xml => @grupo, :status => :created, :location => @grupo }
       else
         format.html { render :action => "new" }
@@ -65,7 +65,7 @@ class GruposController < ApplicationController
 
     respond_to do |format|
       if @grupo.update_attributes(params[:grupo])
-        format.html { redirect_to(@grupo, :notice => 'Grupo was successfully updated.') }
+        format.html { redirect_to(@grupo, :notice => 'Grupo alterado com sucesso.') }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }

@@ -52,7 +52,7 @@ class ProdutosController < ApplicationController
 
     respond_to do |format|
       if @produto.save
-        format.html { redirect_to(@produto, :notice => 'Produto was successfully created.') }
+        format.html { redirect_to(@produto, :notice => 'Produto criado com sucesso.') }
         format.xml  { render :xml => @produto, :status => :created, :location => @produto }
       else
         format.html { render :action => "new" }
@@ -68,7 +68,7 @@ class ProdutosController < ApplicationController
 
     respond_to do |format|
       if @produto.update_attributes(params[:produto])
-        format.html { redirect_to(@produto, :notice => 'Produto was successfully updated.') }
+        format.html { redirect_to(@produto, :notice => 'Produto alterado com sucesso.') }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
