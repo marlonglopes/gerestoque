@@ -9,8 +9,8 @@ Bundler.require(:default, Rails.env) if defined?(Bundler)
 module Gerestoque
   class Application < Rails::Application
   
-	#  ActiveSupport::XmlMini.backend = 'Nokogiri'
-	ActiveSupport::XmlMini.backend = 'LibXML'
+	  ActiveSupport::XmlMini.backend = 'Nokogiri'
+#	ActiveSupport::XmlMini.backend = 'LibXML'
     
     config.autoload_paths << "#{config.root}/lib"    # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
