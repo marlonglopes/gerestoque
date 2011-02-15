@@ -8,4 +8,6 @@ class Item < ActiveRecord::Base
 
  	validates_associated :produto, :marca, :parecer
 
+	scope :favoravel, where(:parecer_id=>1)
+
 end

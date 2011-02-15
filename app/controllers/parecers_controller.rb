@@ -1,4 +1,9 @@
 class ParecersController < ApplicationController
+
+	before_filter :login_required #, :except => [:index, :show]
+	before_filter :check_admin #, :except => [:index, :show]
+
+
   # GET /parecers
   # GET /parecers.xml
   def index

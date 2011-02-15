@@ -1,10 +1,20 @@
 class ItemsController < ApplicationController
+
+	before_filter :login_required, :except => [:index, :show]
+	before_filter :check_admin, :except => [:index, :show]
+
   # GET /items
   # GET /items.xml
   def index
 
- 	 @search = Item.includes(:produto).search(params[:search])
+	if logged_in? and current_user.admin?
+ 	 @search = Item.joins(:produto).search(params[:search])
 	 @items = @search.order("id").scoped.paginate(:page => params[:page], :per_page=>20)
+	else
+ 	 @search = Item.joins(:produto).favoravel.search(params[:search])
+	 @items = @search.order("id").scoped.paginate(:page => params[:page], :per_page=>20)
+	end
+
 
     respond_to do |format|
       format.html # index.html.erb

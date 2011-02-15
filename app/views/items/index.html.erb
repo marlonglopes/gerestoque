@@ -1,8 +1,6 @@
 <h1>Items</h1>
 
-
 <%= render 'search' %>
-
 
 <hr />
 <table>
@@ -24,9 +22,15 @@
     <td><%= item.produto.grupo.descricao %></td>
     <td><%= item.marca.nome %></td>
     <td><%= item.parecer.descricao%></td>
+
+	<% if logged_in? and current_user.admin? %>
+
     <td><%= link_to 'Show', item %></td>
     <td><%= link_to 'Edit', edit_item_path(item) %></td>
     <td><%= link_to 'Destroy', item_path(item), :confirm => 'Are you sure?', :method => :delete %></td>
+
+	<% end%>
+
   </tr>
 <% end %>
 </table>
@@ -35,8 +39,11 @@
 
 <br />
 
-<%= link_to 'New Item', new_item_path %>
+<% if logged_in? and current_user.admin? %>
 
+	<%= link_to 'New Item', new_item_path %>
+
+<% end %>
 
 
 

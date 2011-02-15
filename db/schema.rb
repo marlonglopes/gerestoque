@@ -10,10 +10,9 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110214155740) do
+ActiveRecord::Schema.define(:version => 20110214234522) do
 
   create_table "grupos", :force => true do |t|
-    t.integer  "codigo"
     t.string   "descricao"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -28,29 +27,25 @@ ActiveRecord::Schema.define(:version => 20110214155740) do
   end
 
   create_table "marcas", :force => true do |t|
-    t.integer  "codigo"
     t.string   "nome"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "parecers", :force => true do |t|
-    t.integer  "codigo"
     t.string   "descricao"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "produtos", :force => true do |t|
-    t.integer  "codigo"
     t.string   "descricao"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "grupo_id"
-    t.integer  "marca_id"
   end
 
-  add_index "produtos", ["codigo"], :name => "index_produtos_on_codigo", :unique => true
+  add_index "produtos", ["descricao"], :name => "index_produtos_on_descricao"
 
   create_table "users", :force => true do |t|
     t.string   "username"
@@ -59,6 +54,7 @@ ActiveRecord::Schema.define(:version => 20110214155740) do
     t.string   "password_salt"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "admin",         :default => false
   end
 
 end

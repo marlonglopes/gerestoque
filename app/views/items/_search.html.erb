@@ -2,12 +2,12 @@
 
 		<%= form_for @search do |f| %>
 
-
+		<% if logged_in? and current_user.admin? %>
 		  <p>
 			<%= f.label :parecer_id_equals, "Parecer:" %><br />
 			<%= f.select  "parecer_id_equals",  Parecer.order("descricao").scoped.map { |p| [ p.descricao, p.id ]}, {:include_blank => ''}, :class=>"clearme" %>
 		  </p>
-
+		<% end %>
 
 		  <p>
 			<%= f.label :produto_grupo_id_equals, "Grupo:" %><br />
