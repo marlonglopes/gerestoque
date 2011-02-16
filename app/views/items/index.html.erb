@@ -11,15 +11,16 @@
 
 <table>
   <tr>
-    <th>Código</th>
-    <th>Descrição</th>    
-    <th>Grupo</th>    
-    <th>Marca</th>
-    <th>Parecer</th>    
+    <th><%= sort_link @search,  :produto_id, "Código" %></th>
+    <th><%= sort_link @search,  :produto_descricao, "Descrição" %></th>    
+    <th><%= sort_link @search,  :produto_grupo_descricao, "Grupo" %></th>    
+    <th><%= sort_link @search,  :marca_nome, "Marca" %></th>
+    <th><%= sort_link @search,  :parecer_descricao, "Parecer" %></th>    
     <th></th>
     <th></th>
     <th></th>
   </tr>
+
 
 <% @items.each do |item| %>
   <tr>
