@@ -4,3 +4,4 @@ log/*.log
 tmp/**/*
 *.txt
 *.TXT
+.bundle\n
