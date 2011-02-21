@@ -51,7 +51,7 @@ class MarcasController < ApplicationController
 
     respond_to do |format|
       if @marca.save
-        format.html { redirect_to(@marca, :notice => 'marca criada com sucesso.') }
+        format.html { redirect_to(@marca, :notice => 'Marca criada com sucesso.') }
         format.xml  { render :xml => @marca, :status => :created, :location => @marca }
       else
         format.html { render :action => "new" }
@@ -67,7 +67,7 @@ class MarcasController < ApplicationController
 
     respond_to do |format|
       if @marca.update_attributes(params[:marca])
-        format.html { redirect_to(@marca, :notice => 'marca alterada com sucesso.') }
+        format.html { redirect_to(@marca, :notice => 'Marca alterada com sucesso.') }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }

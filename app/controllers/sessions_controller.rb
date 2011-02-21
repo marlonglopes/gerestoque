@@ -6,7 +6,7 @@ class SessionsController < ApplicationController
     user = User.authenticate(params[:login], params[:password])
     if user
       session[:user_id] = user.id
-      flash[:notice] = "Voce esta logado."
+      flash[:notice] = "Você esta logado."
       redirect_to_target_or_default(root_path)
     else
       flash.now[:error] = "Username/Email inválido ou senha inválida."
@@ -16,7 +16,7 @@ class SessionsController < ApplicationController
 
   def destroy
     session[:user_id] = nil
-    flash[:notice] = "Você nao está mais logado."
+    flash[:notice] = "Você não está mais logado."
     redirect_to root_path
   end
 end
