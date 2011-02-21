@@ -9,8 +9,8 @@ class UsersController < ApplicationController
     @user = User.new(params[:user])
     if @user.save
       session[:user_id] = @user.id
-      flash[:notice] = "Thank you for signing up! You are now logged in."
-      redirect_to "/"
+      flash[:notice] =  "Perfil criado com sucesso, Voce está logado."
+      redirect_to root_path
     else
       render :action => 'new'
     end
@@ -23,8 +23,8 @@ class UsersController < ApplicationController
   def update
     @user = current_user
     if @user.update_attributes(params[:user])
-      flash[:notice] = "Your profile has been updated."
-      redirect_to "/"
+      flash[:notice] = "Perfil do usuário atualizado."
+      redirect_to root_path
     else
       render :action => 'edit'
     end

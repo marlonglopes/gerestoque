@@ -2,6 +2,10 @@
 
 	<%= render 'shared/error_messages', :object => f.object %>
 
+ <fieldset class="round"> 
+ <legend>Dados para login</legend> 
+
+<div class="dados_usuario">
   <p>
     <%= f.label :username %><br />
     <%= f.text_field :username %>
@@ -18,5 +22,8 @@
     <%= f.label :password_confirmation, "Confirm Password" %><br />
     <%= f.password_field :password_confirmation %>
   </p>
+</div>
+   </fieldset> 
+
   <p><%= f.submit (@user.new_record? ? "Sign up" : "Update", :class=>"g-button") %></p>
 <% end %>
