@@ -9,7 +9,7 @@ class SessionsController < ApplicationController
       flash[:notice] = "Você esta logado."
       redirect_to_target_or_default(root_path)
     else
-      flash.now[:error] = "Username/Email inválido ou senha inválida."
+      flash.now[:error] = "Usuário/Email inválido ou senha inválida."
       render :action => 'new'
     end
   end
