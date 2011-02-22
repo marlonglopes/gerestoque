@@ -15,7 +15,7 @@ Gerestoque::Application.routes.draw do
   match 'logout' => 'sessions#destroy', :as => :logout
   match 'login' => 'sessions#new', :as => :login
 
-	match 'editais' => redirect('http://apps.ghc.com.br/gereditais'), :as=>:editais
+  match 'editais' => redirect('http://apps.ghc.com.br/gereditais'), :as=>:editais
 
   root :to => "items#index"
 
