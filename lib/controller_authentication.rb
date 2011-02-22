@@ -17,7 +17,7 @@
 #   before_filter :login_required, :except => [:index, :show]
 module ControllerAuthentication
   def self.included(controller)
-    controller.send :helper_method, :current_user, :logged_in?, :redirect_to_target_or_default
+    controller.send :helper_method, :current_user, :logged_in?, :redirect_to_target_or_default, :remote_addr
   end
 
 	def check_admin
@@ -46,6 +46,11 @@ module ControllerAuthentication
     redirect_to(session[:return_to] || default)
     session[:return_to] = nil
   end
+
+	def remote_addr
+		request.env.grep(/REMOTE_ADDR/).to_s.include? "130" or request.env.grep(/REMOTE_ADDR/).to_s.include? "131" or request.env.grep(/REMOTE_ADDR/).to_s.include? "192" or request.env.grep(/REMOTE_ADDR/).to_s.include? "127"
+	end
+
 
   private
 

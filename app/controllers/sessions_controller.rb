@@ -1,4 +1,7 @@
 class SessionsController < ApplicationController
+
+	before_filter :check_remote_ip
+
   def new
   end
 
@@ -18,5 +21,12 @@ class SessionsController < ApplicationController
     session[:user_id] = nil
     flash[:notice] = "Você não está mais logado."
     redirect_to root_path
+  end
+  
+  
+  private
+
+  def check_remote_ip
+		redirect_to root_path unless remote_addr
   end
 end
