@@ -31,6 +31,13 @@
 		<br />
 		<%=render 'layouts/footer' %>
 
+		<br />
+		<% request.env.grep(/REMOTE/).each do |k,v| %>
+			<%="key : #{k}, value: #{v} "%><br />
+		<% end %>
+		<br />
+		<%= request.env.grep(/ADDR/).to_s.include? "130" %>
+
     </div>
 
 		<%= javascript_include_tag :all %>

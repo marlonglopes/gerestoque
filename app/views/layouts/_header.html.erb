@@ -2,16 +2,24 @@
 
 	<%= link_to logo, "http://www.ghc.com.br" %>
 
+
+
+
 	<nav class="round">
 
 		<ul>
+
+
 			<li><%= link_to "Produtos", root_path%></li>
 			<li><%= link_to "Editais do GHC", editais_path%></li>
 
-			<% if logged_in? %>
-				<li><%= link_to "Log out", logout_path, :method => :delete %></li>
-			<% else %>
-				<li><%= link_to "Log in", login_path %></li>
+
+			<% if remote_addr %>
+				<% if logged_in? %>
+					<li><%= link_to "Log out", logout_path, :method => :delete %></li>
+				<% else %>
+					<li><%= link_to "Log in", login_path %></li>
+				<% end %>
 			<% end %>
 
 		</ul>
