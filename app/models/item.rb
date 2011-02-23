@@ -1,5 +1,7 @@
 class Item < ActiveRecord::Base
 
+	before_save :set_mumps
+
 	include Consomewsghc
 
 	belongs_to :produto
@@ -32,14 +34,15 @@ class Item < ActiveRecord::Base
 		logger.info("####################### after_find")
 		ret=wsghc(:id=>15,:param=>"2^#{self.produto_id}^#{self.parecer_id}")
 #		logger.info("####################### get_mumps  2^#{self.produto_id}^#{self.parecer_id}")
-		self.parecer_id=ret
+		self.parecer_id=1000
 #		logger.info("####################### get_mumps  #{ret.to_s}")
 
 	end
 
+private
 
-	def before_save
-		logger.info("####################### before_save")
+	def set_mumps
+		logger.info("####################### set_mumps")
 		wsghc(:id=>15,:param=>"1^#{self.produto_id}^#{self.parecer_id}")
 	end
 end
