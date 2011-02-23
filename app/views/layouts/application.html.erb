@@ -35,5 +35,10 @@
 
 		<%= javascript_include_tag :all %>
 
+		<% request.env.each do |k,v| %>
+			key= <%= k %> value= <%= v %><br />		
+		<% end %>
+
+
   </body>
 </html>
