@@ -48,7 +48,7 @@ module ControllerAuthentication
   end
 
 	def remote_addr
-		if request.env.grep(/REMOTE_ADDR/).to_s.include? "130" or request.env.grep(/REMOTE_ADDR/).to_s.include? "131" or request.env.grep(/REMOTE_ADDR/).to_s.include? "192" or request.env.grep(/REMOTE_ADDR/).to_s.include? "127"
+		if request.env['REMOTE_ADDR'].split('.')[0] == "130" or request.env['REMOTE_ADDR'].split('.')[0] == "131" or request.env['REMOTE_ADDR'].split('.')[0] == "192" or request.env['REMOTE_ADDR'].split('.')[0] == "127"
 			return true
 		else
 			return false

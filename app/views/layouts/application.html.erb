@@ -35,10 +35,10 @@
 
 		<%= javascript_include_tag :all %>
 
-		<% request.env.each do |k,v| %>
-			key= <%= k %> value= <%= v %><br />		
-		<% end %>
-
+<!--		<% request.env.each do |k,v| %>-->
+<!--			key= <%= k %> value= <%= v %><br />		-->
+<!--		<% end %>-->
+<!--			<%=request.env['REMOTE_ADDR'].split('.')[0] %>-->
 
   </body>
 </html>
