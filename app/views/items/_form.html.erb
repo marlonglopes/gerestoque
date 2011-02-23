@@ -3,15 +3,15 @@
 	<%= render 'shared/error_messages', :object => f.object %>
 
   <div class="field">
-    <%= f.label :produto_id %><br />
+    <%= f.label :produto_id, "Produto:" %><br />
 	<p><%=@item.produto.descricao%></p>
   </div>
   <div class="field">
-    <%= f.label :marca_id %><br />
+    <%= f.label :marca_id,"Marca:" %><br />
   	<p><%=@item.marca.nome%></p>
   </div>
   <div class="field">
-    <%= f.label :parecer %><br />
+    <%= f.label :parecer , "Parecer:"%><br />
 	 <%= f.select  "parecer_id",  pareceres.map { |p| [ p.descricao, p.id ]}, {:include_blank => ''}%>
   </div>
 

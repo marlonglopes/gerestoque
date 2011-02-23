@@ -1,20 +1,17 @@
-<p id="notice"><%= notice %></p>
+<% title "Exibe Item" %>
 
 <p>
-  <b>Código:</b>
-  <%= @item.produto_id %>  
-  <b>Descrição:</b>
+  <b>Produto:</b> <br />
   <%= @item.produto.descricao %>
-
 </p>
 
 <p>
-  <b>Marca:</b>
+  <b>Marca:</b><br />
   <%= @item.marca.nome %>
 </p>
 
 <p>
-  <b>Parecer:</b>
+  <b>Parecer:</b><br />
   <%= @item.parecer.descricao %>
 </p>
 
