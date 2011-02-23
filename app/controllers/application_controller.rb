@@ -1,7 +1,10 @@
 # encoding: utf-8
 
 class ApplicationController < ActionController::Base
-  include ControllerAuthentication
+ 
+ 	helper_method :marcas, :pareceres, :produtos
+ 
+   include ControllerAuthentication
 
 	before_filter :set_locale
 
@@ -17,6 +20,19 @@ class ApplicationController < ActionController::Base
   		locale = params[:locale] || 'pt'
 	  	I18n.locale = locale
   		I18n.load_path += Dir[ File.join(Rails.root.to_s, 'lib', 'locale', '*.{rb,yml}') ]
+	end
+
+
+	def marcas
+		@marcas ||= Marca.all
+	end
+
+	def pareceres
+		@pareceres ||= Parecer.all
+	end
+
+	def produtos
+		@produtos ||= Produto.all
 	end
 
 end

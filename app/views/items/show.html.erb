@@ -1,13 +1,21 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <b>Produto:</b>
-  <%= @item.produto_id %>
+  <b>Código:</b>
+  <%= @item.produto_id %>  
+  <b>Descrição:</b>
+  <%= @item.produto.descricao %>
+
 </p>
 
 <p>
-  <b>Fabricante:</b>
-  <%= @item.marca_id %>
+  <b>Marca:</b>
+  <%= @item.marca.nome %>
+</p>
+
+<p>
+  <b>Parecer:</b>
+  <%= @item.parecer.descricao %>
 </p>
 
 
