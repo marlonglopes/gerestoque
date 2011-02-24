@@ -24,7 +24,7 @@ module Consomewsghc
 		wsdll = "http://130.158.1.41/WSGHCWorkflow/WSGHCWorkflow.asmx?WSDL"
 		wsdla = "http://www2.ghc.com.br/WSGHCActivate/MSM.asmx?WSDL"
 		wsdlal = "http://172.16.253.5/WSGHCActivate/MSM.asmx?WSDL"
-		SOAP::WSDLDriverFactory.new(wsdlal).create_rpc_driver
+		SOAP::WSDLDriverFactory.new(wsdla).create_rpc_driver
 
     end
 end
