@@ -1,6 +1,8 @@
 class Item < ActiveRecord::Base
 
 	before_save :set_mumps
+	after_find 	:get_mumps
+	after_initialize :get_mumps2
 
 #	include Consomewsghc
 
@@ -30,25 +32,20 @@ class Item < ActiveRecord::Base
 ##	read_attribute(:parecer_id)
 #  end
 
-	def after_find
-		get_mumps
-	end
-
-	def after_initialize
-		puts "after initialize"
-	end
-
 private
 
 	def get_mumps
 #		logger.info("####################### get_mumps")
-		ret=ControllerConsomewsghc::wsghc(:id=>15,:param=>"2^#{self.produto_id}^#{self.parecer_id}")
+#		ret=ControllerConsomewsghc::wsghc(:id=>15,:param=>"2^#{self.produto_id}^#{self.parecer_id}")
 #		logger.info("####################### get_mumps  2^#{self.produto_id}^#{self.parecer_id}")
 #		self.parecer_id=ret
 #		logger.info("####################### get_mumps  #{ret.to_s}")
-	puts "##### #{ret}"
+		puts ControllerConsomewsghc::wsghc(:id=>15,:param=>"2^#{self.produto_id}^#{self.parecer_id}")
 	end
-
+	
+	def get_mumps2
+		puts "after_initialize get_mumps2"
+	end
 
 
 	def set_mumps
