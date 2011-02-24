@@ -27,7 +27,8 @@ class Item < ActiveRecord::Base
 
 	def parecer_mumps
 		begin
-		ret=ControllerConsomewsghc::wsghc(:id=>15,:param=>"2^#{self.produto_id}^#{self.parecer_id}")
+		ret=ControllerConsomewsghc::wsghc(	:id=>15,
+														:param=>"2^#{self.produto_id}^#{self.marca_id}^#{self.parecer_id}")
 		@parecer=Parecer.find(ret)
 		rescue
 			self.parecer
@@ -61,13 +62,15 @@ private
 	
 	def get_parecer_mumps
 		logger.info("####################### before_update :get_mumps")
-		ret=ControllerConsomewsghc::wsghc(:id=>15,:param=>"2^#{self.produto_id}^#{self.parecer_id}")
+		ret=ControllerConsomewsghc::wsghc(	:id=>15,
+														:param=>"2^#{self.produto_id}^#{self.marca_id}^#{self.parecer_id}")
 		self.parecer_id=ret
 	end
 
 
 	def set_parecer_mumps
 		logger.info("####################### before_save :set_mumps")
-		ControllerConsomewsghc::wsghc(:id=>15,:param=>"1^#{self.produto_id}^#{self.parecer_id}")
+		ControllerConsomewsghc::wsghc(	:id=>15,
+													:param=>"1^#{self.produto_id}^#{self.marca_id}^#{self.parecer_id}")
 	end
 end
