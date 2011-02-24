@@ -6,13 +6,19 @@ module Consomewsghc
 
 	def wsghc(params={})
 
+#		server = params[:server] ?  params[:server] : "172.16.2.5"
+#		uci= params[:uci] ? params[:uci] : "MWS"
+#		volgrp= params[:volgrp] ? params[:volgrp] : "MWS"
+#		rotina= params[:rotina] ? params[:rotina] : "^webServ"
+
 		id = params[:id] ?  params[:id] : 10000
 		param= params[:param] ?  params[:param] : "param^param^param"
-		 
+
 		soap = wsdl
-		response = soap.GHCGenericFunction(:id => id, :param => param)
+		response = soap.do(:server=>server,:uci=>uci,:volgrp=>volgrp,:rotina=>rotina,:id => id, :param => param)
 		soap.reset_stream
-		response.gHCGenericFunctionResult
+		response.doResult
+
 	end
 
 
@@ -21,8 +27,9 @@ module Consomewsghc
 
 		wsdlr = "http://workflow.ghc.com.br/wsghcworkflow/WSGHCWorkflow.asmx?WSDL"
 		wsdll = "http://130.158.1.41/WSGHCWorkflow/WSGHCWorkflow.asmx?WSDL"
-
-		SOAP::WSDLDriverFactory.new(wsdll).create_rpc_driver
+		wsdla = "http://www2.ghc.com.br/WSGHCActivate/MSM.asmx?WSDL"
+		wsdlal = "http://172.16.253.5/WSGHCActivate/MSM.asmx?WSDL"
+		SOAP::WSDLDriverFactory.new(wsdlal).create_rpc_driver
 
 #		if remote_addr
 #			SOAP::WSDLDriverFactory.new(wsdll).create_rpc_driver
