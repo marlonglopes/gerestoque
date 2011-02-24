@@ -40,11 +40,15 @@ private
 #		logger.info("####################### get_mumps  2^#{self.produto_id}^#{self.parecer_id}")
 #		self.parecer_id=ret
 #		logger.info("####################### get_mumps  #{ret.to_s}")
-		puts ControllerConsomewsghc::wsghc(:id=>15,:param=>"2^#{self.produto_id}^#{self.parecer_id}")
+#		puts ControllerConsomewsghc::wsghc(:id=>15,:param=>"2^#{self.produto_id}^#{self.parecer_id}")
+#		puts "after_find get_mumps"
+#		self.parecer_id=1
 	end
 	
 	def get_mumps2
-		puts "after_initialize get_mumps2"
+		ret=ControllerConsomewsghc::wsghc(:id=>15,:param=>"2^#{self.produto_id}^#{self.parecer_id}")
+#		puts "after_initialize get_mumps2"
+		self.parecer_id=ret
 	end
 
 
