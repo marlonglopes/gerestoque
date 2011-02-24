@@ -13,7 +13,10 @@
 <p>
   <b>Parecer:</b><br />
   <%= @item.parecer.descricao %>
+  <span id="dif"><%= verif_mumps_icon(@item) %></span>
 </p>
+
+
 
 
 <%= link_to 'Edit', edit_item_path(@item) %> |

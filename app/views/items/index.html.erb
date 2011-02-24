@@ -12,6 +12,7 @@
 <table>
   <tr>
     <th><%= sort_link @search,  :produto_id, "Código" %></th>
+    <th></th>
     <th><%= sort_link @search,  :produto_descricao, "Descrição" %></th>    
     <th><%= sort_link @search,  :produto_grupo_descricao, "Grupo" %></th>    
     <th><%= sort_link @search,  :marca_nome, "Marca" %></th>
@@ -25,10 +26,14 @@
 <% @items.each do |item| %>
   <tr>
     <td><%= item.produto.id %></td>
+    <td><span id="dif"><%= verif_mumps_icon(item) %></span></td>
     <td><%= item.produto.descricao %></td>
     <td><%= item.produto.grupo.descricao %></td>
     <td><%= item.marca.nome %></td>
     <td><%= item.parecer.descricao%></td>
+
+   
+    
 
 	<% if logged_in? and current_user.admin? %>
 

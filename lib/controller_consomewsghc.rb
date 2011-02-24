@@ -25,7 +25,15 @@ module ControllerConsomewsghc
 		wsdlr = "http://workflow.ghc.com.br/wsghcworkflow/WSGHCWorkflow.asmx?WSDL"
 		wsdll = "http://130.158.1.41/WSGHCWorkflow/WSGHCWorkflow.asmx?WSDL"
 
-		SOAP::WSDLDriverFactory.new(wsdlr).create_rpc_driver
+		SOAP::WSDLDriverFactory.new(wsdll).create_rpc_driver
+
+#		if remote_addr
+#			SOAP::WSDLDriverFactory.new(wsdll).create_rpc_driver
+#		else
+#			SOAP::WSDLDriverFactory.new(wsdlr).create_rpc_driver
+#		end
+
     end
+
 end
 

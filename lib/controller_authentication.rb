@@ -47,6 +47,7 @@ module ControllerAuthentication
     session[:return_to] = nil
   end
 
+
 	def remote_addr
 		if request.env['REMOTE_ADDR'].split('.')[0] == "130" or request.env['REMOTE_ADDR'].split('.')[0] == "131" or request.env['REMOTE_ADDR'].split('.')[0] == "192" or request.env['REMOTE_ADDR'].split('.')[0] == "127"
 			return true

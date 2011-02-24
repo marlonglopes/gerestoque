@@ -18,7 +18,6 @@ class ItemsController < ApplicationController
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @items.to_xml(:include => {:parecer=>{}, :marca=>{},:produto => {:include => :grupo}})}
-
      
     end
   end

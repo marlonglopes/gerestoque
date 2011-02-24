@@ -1,8 +1,9 @@
 class Item < ActiveRecord::Base
 
-	before_save :set_mumps
-	after_find 	:get_mumps
-	after_initialize :get_mumps2
+#	before_update :get_parecer_mumps
+	before_save :set_parecer_mumps
+#	after_find 	:get_mumps
+#	after_initialize :get_mumps
 
 #	include Consomewsghc
 
@@ -20,6 +21,19 @@ class Item < ActiveRecord::Base
 		@parecer=Parecer.find(self.parecer_id)
 	end
 
+	def parecer=(par)
+		self.parecer_id=par.id
+	end
+
+	def parecer_mumps
+		begin
+		ret=ControllerConsomewsghc::wsghc(:id=>15,:param=>"2^#{self.produto_id}^#{self.parecer_id}")
+		@parecer=Parecer.find(ret)
+		rescue
+			self.parecer
+		end
+	end
+
 #	def parecer_id=(id)
 #    write_attribute(:parecer_id, id)
 #  end
@@ -34,7 +48,7 @@ class Item < ActiveRecord::Base
 
 private
 
-	def get_mumps
+	def get_mumps2
 #		logger.info("####################### get_mumps")
 #		ret=ControllerConsomewsghc::wsghc(:id=>15,:param=>"2^#{self.produto_id}^#{self.parecer_id}")
 #		logger.info("####################### get_mumps  2^#{self.produto_id}^#{self.parecer_id}")
@@ -45,15 +59,15 @@ private
 #		self.parecer_id=1
 	end
 	
-	def get_mumps2
+	def get_parecer_mumps
+		logger.info("####################### before_update :get_mumps")
 		ret=ControllerConsomewsghc::wsghc(:id=>15,:param=>"2^#{self.produto_id}^#{self.parecer_id}")
-#		puts "after_initialize get_mumps2"
 		self.parecer_id=ret
 	end
 
 
-	def set_mumps
-#		logger.info("####################### set_mumps")
+	def set_parecer_mumps
+		logger.info("####################### before_save :set_mumps")
 		ControllerConsomewsghc::wsghc(:id=>15,:param=>"1^#{self.produto_id}^#{self.parecer_id}")
 	end
 end

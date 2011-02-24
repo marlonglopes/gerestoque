@@ -13,6 +13,8 @@
   <div class="field">
     <%= f.label :parecer , "Parecer:"%><br />
 	 <%= f.select  "parecer_id",  pareceres.map { |p| [ p.descricao, p.id ]}, {:include_blank => ''}%>
+	 <span id="dif"><%= verif_mumps_icon(@item) %></span>
+
   </div>
 
   <div class="actions">
