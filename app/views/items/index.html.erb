@@ -1,6 +1,5 @@
 <% title "Relação de Itens" %>
 
-<%= render 'search' %>
 
 <hr />
 
@@ -32,14 +31,11 @@
     <td><%= item.marca.nome %></td>
     <td><%= item.parecer.descricao%></td>
 
-   
-    
-
 	<% if logged_in? and current_user.admin? %>
 
-    <td><%= link_to 'Show', item %></td>
-    <td><%= link_to 'Edit', edit_item_path(item) %></td>
-    <td><%= link_to 'Destroy', item_path(item), :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= link_to 'Show', produto_item_path(item.produto,item) %></td>
+    <td><%= link_to 'Edit', edit_produto_item_path(item.produto,item) %></td>
+    <td><%= link_to 'Destroy', produto_item_path(item.produto,item), :confirm => 'Are you sure?', :method => :delete %></td>
 
 	<% end%>
 
@@ -55,7 +51,7 @@
 
 <% if logged_in? and current_user.admin? %>
 
-	<%= link_to 'New Item', new_item_path %>
+	<%= link_to 'New Item', new_produto_item_path %>
 
 <% end %>
 

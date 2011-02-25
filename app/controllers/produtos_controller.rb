@@ -1,13 +1,15 @@
 class ProdutosController < ApplicationController
 
-	before_filter :login_required #, :except => [:index, :show]
-	before_filter :check_admin #, :except => [:index, :show]
+#	before_filter :login_required #, :except => [:index, :show]
+#	before_filter :check_admin #, :except => [:index, :show]
 
   # GET /produtos
   # GET /produtos.xml
   def index
 
-	 @search = Produto.search(params[:search])
+#	 @grupo=Grupo.find(params[:search][:grupo_id_equals]) if params[:search][:grupo_id_equals]!=""
+		
+	 @search = Produto.joins(:items,:marcas).search(params[:search])
 	 @produtos = @search.order("id").paginate(:page => params[:page], :per_page=>20)
 
     respond_to do |format|
