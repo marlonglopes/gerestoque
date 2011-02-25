@@ -1,7 +1,7 @@
 class Item < ActiveRecord::Base
 
-	after_find :get_parecer_mumps
-	before_save :set_parecer_mumps
+#	after_find :get_parecer_mumps
+#	before_save :set_parecer_mumps
 
 	belongs_to :produto
 	belongs_to :marca
