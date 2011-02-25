@@ -24,10 +24,10 @@ class Item < ActiveRecord::Base
 	def parecer_mumps
 		begin
 #			logger.info("####################### before_update :get_mumps")
-			ret=ControllerConsomewsghc::wsghc(	:id=>15,
-															:param=>"2^#{self.produto_id}^#{self.marca_id}^#{self.parecer_id}")
+#			ret=ControllerConsomewsghc::wsghc(	:id=>15,
+#															:param=>"2^#{self.produto_id}^#{self.marca_id}^#{self.parecer_id}")
 
-			@parecer=Parecer.find(ret)
+#			@parecer=Parecer.find(ret)
 		rescue
 			self.parecer
 		end
@@ -40,11 +40,10 @@ private
 #		logger.info("####################### before_update :get_mumps")
 
 		begin
-			ret=ControllerConsomewsghc::wsghc(	:id=>15,
-															:param=>"2^#{self.produto_id}^#{self.marca_id}^#{self.parecer_id}")
-			puts "#{ret}"
-			self.parecer_id=ret
-			self.save!
+#			ret=ControllerConsomewsghc::wsghc(	:id=>15,
+#															:param=>"2^#{self.produto_id}^#{self.marca_id}^#{self.parecer_id}")
+#			self.parecer_id=ret
+#			self.save!
 		rescue
 		end
 	end
