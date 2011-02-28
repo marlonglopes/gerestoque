@@ -11,6 +11,10 @@
 <!--<% end %>-->
 
 
+<br />
+<%= will_paginate @produtos %>	
+<br />
+
 <table>
   <tr>
 		<th>Código</th>
@@ -26,18 +30,34 @@
 
 <% @produtos.each do |produto| %>
   <tr>
-    <td><%= produto.id %></td>
-    <td><%= produto.descricao %></td>
-    <td><%= link_to "#{pluralize(produto.marcas.count,'Marca')}", produto_items_path(produto) %></td>
+    <td class="top"><%= produto.id %></td>
+    <td class="top"><%= produto.descricao %></td>
+    <td class="top"><%= link_to "#{pluralize(produto.marcas.count,'Marca')}", produto_items_path(produto) %>
+		<table>
+		  <tr>
+			 <th>Marca</th>
+			 <th>Parecer</th>
+		  </tr>
+   	 
+    	</table>
+    </td>	
+	
+
 	<% if logged_in? and current_user.admin? %>
-	 <td><%= link_to 'Show', produto_path(produto	) %></td>
-	 <td><%= link_to 'Edit', edit_produto_path(produto) %></td>
-	 <td><%= link_to 'Destroy', produto_path(produto), :confirm => 'Are you sure?', :method => :delete %></td>
+		 <td><%= link_to 'Show', produto_path(produto	) %></td>
+		 <td><%= link_to 'Edit', edit_produto_path(produto) %></td>
+		 <td><%= link_to 'Destroy', produto_path(produto), :confirm => 'Are you sure?', :method => :delete %></td>
 	<% end %>
+
   </tr>
 <% end %>
 
 </table>
+
+<br />
+<%= will_paginate @produtos %>	
+<br />
+
 
 <br />
 <% if logged_in? and current_user.admin? %>

@@ -24,6 +24,7 @@ class Item < ActiveRecord::Base
 	def parecer_mumps
 		begin
 #			logger.info("####################### before_update :get_mumps")
+#			return self.parecer
 			ret=ControllerConsomewsghc::wsghc(	:id=>15,
 															:param=>"2^#{self.produto_id}^#{self.marca_id}^#{self.parecer_id}")
 
