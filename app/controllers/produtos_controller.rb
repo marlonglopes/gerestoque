@@ -7,7 +7,6 @@ class ProdutosController < ApplicationController
   # GET /produtos.xml
   def index
 
-
 	 @search = Produto.search(params[:search])
 	 @produtos = @search.order("id").paginate(:page => params[:page], :per_page=>20)
 

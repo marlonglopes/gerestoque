@@ -42,9 +42,10 @@ private
 		begin
 			ret=ControllerConsomewsghc::wsghc(	:id=>15,
 															:param=>"2^#{self.produto_id}^#{self.marca_id}^#{self.parecer_id}")
-			puts "#{ret}"
-			self.parecer_id=ret
-			self.save!
+			if ret.to_i!=0
+				self.parecer_id=ret
+				self.save!
+			end
 		rescue
 		end
 	end
