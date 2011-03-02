@@ -10,7 +10,7 @@ class Produto < ActiveRecord::Base
 	scope :favoravel, items.where("items.parecer_id = 1")
 
 	scope :find_by_marca, lambda {|marca| 
-				items.where("marcas.nome like ?","%#{marca.to_s.upcase}%")
+				favoravel.where("marcas.nome like ?","%#{marca.to_s.upcase}%")
 	}
 
  	search_methods :find_by_marca
