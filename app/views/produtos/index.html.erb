@@ -1,33 +1,67 @@
-<h1>Produtos</h1>
+<% title "Relação de Produtos" %>
 
 <%=render 'search'%>
 
 <hr />
 
+<% if @grupo %>
+	<h3><%= @grupo.descricao %></h3>
+<% else %>
+	<h3>Todos os Grupos</h3>
+<% end %>
+
+<br />
+<%= will_paginate @produtos %>	
+<br />
+
 <table>
   <tr>
-    <th>Código</th>
-    <th>Descricao</th>
-    <th>Grupo</th>
-    <th></th>
-    <th></th>
-    <th></th>
+		<th>Código</th>
+		<th>Descricao</th>
+
+	<% if logged_in? and current_user.admin? %>
+		<th></th>
+		<th></th>
+		<th></th>
+	<% end %>
+
   </tr>
 
 <% @produtos.each do |produto| %>
   <tr>
-    <td><%= produto.id %></td>
-    <td><%= produto.descricao %></td>
-    <td><%= produto.grupo.descricao %></td>
-    <td><%= link_to 'Show', grupo_path(produto.grupo,produto	) %></td>
-    <td><%= link_to 'Edit', edit_grupo_path(produto.grupo,produto) %></td>
-    <td><%= link_to 'Destroy', grupo_path(produto.grupo,produto), :confirm => 'Are you sure?', :method => :delete %></td>
+    <td class="top" width='10%'><%= produto.id %></td>
+    <td class="top" width='30%'><%= produto.descricao %></td>
+    <td class="top" width='60%'><%= link_to "#{pluralize(produto.marcas.count,'Marca')}", produto_items_path(produto) %>
+
+		<table>
+		  <tr>
+			 <th>Marca</th>
+			 <th>Parecer</th>
+		  </tr>
+   	 		<%=render :partial=>produto.items %>
+    	</table>
+
+    </td>	
+	
+
+	<% if logged_in? and current_user.admin? %>
+		 <td><%= link_to 'Show', produto_path(produto	) %></td>
+		 <td><%= link_to 'Edit', edit_produto_path(produto) %></td>
+		 <td><%= link_to 'Destroy', produto_path(produto), :confirm => 'Are you sure?', :method => :delete %></td>
+	<% end %>
+
   </tr>
 <% end %>
+
 </table>
 
+<br />
+<%= will_paginate @produtos %>	
+<br />
 
 
 <br />
+<% if logged_in? and current_user.admin? %>
+	<%= link_to 'New Produto', new_grupo_path %>
+<% end %>
 
-<%= link_to 'New Produto', new_grupo_path %>

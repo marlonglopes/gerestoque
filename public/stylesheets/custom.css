@@ -1,3 +1,7 @@
+.top{
+	vertical-align: top;
+}
+
 .g-button{
 	padding: 6px 10px;
 	-webkit-border-radius: 2px 2px;
