@@ -10,10 +10,10 @@ class ProdutosController < ApplicationController
 #	 @grupo=Grupo.find(params[:search][:grupo_id_equals]) if params[:search][:grupo_id_equals]!=""
 
 	if logged_in? and current_user.admin?
-	 @search = Produto.scoped.search(params[:search])
+	 @search = Produto.items.scoped.search(params[:search])
 	 @produtos = @search.order("produtos.id").scoped.paginate(:page => params[:page], :per_page=>20)
 	else
-	 @search = Produto.favoravel.search(params[:search])
+	 @search = Produto.favoravel.scoped.search(params[:search])
 	 @produtos = @search.order("produtos.id").scoped.paginate(:page => params[:page], :per_page=>20)
 	end
 
