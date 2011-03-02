@@ -13,10 +13,9 @@ class ProdutosController < ApplicationController
 	 @search = Produto.items.scoped.search(params[:search])
 	 @produtos = @search.order("produtos.id").scoped.paginate(:page => params[:page], :per_page=>20)
 	else
-	 @search = Produto.favoravel.scoped.search(params[:search])
+	 @search = Produto.items.where("items.parecer_id = 1").scoped.search(params[:search])
 	 @produtos = @search.order("produtos.id").scoped.paginate(:page => params[:page], :per_page=>20)
 	end
-
 
     respond_to do |format|
       format.html # index.html.erb
