@@ -8,9 +8,15 @@ class ProdutosController < ApplicationController
   def index
 
 #	 @grupo=Grupo.find(params[:search][:grupo_id_equals]) if params[:search][:grupo_id_equals]!=""
-		
-	 @search = Produto.joins(:items,:marcas).search(params[:search])
-	 @produtos = @search.order("id").scoped.paginate(:page => params[:page], :per_page=>20)
+
+	if logged_in? and current_user.admin?
+	 @search = Produto.scoped.search(params[:search])
+	 @produtos = @search.order("produtos.id").scoped.paginate(:page => params[:page], :per_page=>20)
+	else
+	 @search = Produto.favoravel.search(params[:search])
+	 @produtos = @search.order("produtos.id").scoped.paginate(:page => params[:page], :per_page=>20)
+	end
+
 
     respond_to do |format|
       format.html # index.html.erb

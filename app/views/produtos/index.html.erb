@@ -4,12 +4,11 @@
 
 <hr />
 
-<!--<% if @grupo %>-->
-<!--	<h3><%= @grupo.descricao %></h3>-->
-<!--<% else %>-->
-<!--	<h3>Todos os Grupos</h3>-->
-<!--<% end %>-->
-
+<% if @grupo %>
+	<h3><%= @grupo.descricao %></h3>
+<% else %>
+	<h3>Todos os Grupos</h3>
+<% end %>
 
 <br />
 <%= will_paginate @produtos %>	
@@ -30,16 +29,18 @@
 
 <% @produtos.each do |produto| %>
   <tr>
-    <td class="top"><%= produto.id %></td>
-    <td class="top"><%= produto.descricao %></td>
-    <td class="top"><%= link_to "#{pluralize(produto.marcas.count,'Marca')}", produto_items_path(produto) %>
+    <td class="top" width='10%'><%= produto.id %></td>
+    <td class="top" width='30%'><%= produto.descricao %></td>
+    <td class="top" width='60%'><%= link_to "#{pluralize(produto.marcas.count,'Marca')}", produto_items_path(produto) %>
+
 		<table>
 		  <tr>
 			 <th>Marca</th>
 			 <th>Parecer</th>
 		  </tr>
-   	 
+   	 		<%=render :partial=>produto.items %>
     	</table>
+
     </td>	
 	
 
