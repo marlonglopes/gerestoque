@@ -3,14 +3,20 @@
 
 		<%= form_for @search do |f| %>
 
-	  <p>
-		 <%= f.label :marca, "Marca:" %><br />
-		 <%= f.text_field :find_by_marca, :class=>"clearme", :placeholder=>"Executa pesquisa no campo marca" %> <br /> 
-	  </p>
 
 		  <p>
 			<%= f.label :grupo_id_equals, "Grupo:" %><br />
+
+		<%  begin %>
 			<%= f.select  "grupo_id_equals",  @grupos.map { |g| [ g.descricao, g.id ]}, {:include_blank => ''}, :class=>"clearme" %>
+		<%  rescue %>
+			<%= f.select  "grupo_id_equals",  Grupo.all.map { |g| [ g.descricao, g.id ]}, {:include_blank => ''}, :class=>"clearme" %>
+		  </p>
+		<%  end %>
+
+		  <p>
+			 <%= f.label :marca, "Marca:" %><br />
+			 <%= f.text_field :find_by_marca, :class=>"clearme", :placeholder=>"Executa pesquisa no campo marca" %> <br /> 
 		  </p>
 
 		 <p>

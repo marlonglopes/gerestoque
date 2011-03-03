@@ -18,7 +18,11 @@ class ProdutosController < ApplicationController
 	@grupos=Grupo.order("descricao").scoped
 		
 	if params[:search]
-				@grupos=Produto.find_by_marca(params[:search][:find_by_marca]).map(&:grupo).uniq!
+		begin
+			@grupos=Produto.find_by_marca(params[:search][:find_by_marca]).map(&:grupo).uniq!
+		rescue
+			@grupos=Grupo.order("descricao").scoped
+		end
 	end
 
   
