@@ -17,7 +17,7 @@ class ProdutosController < ApplicationController
 	 @produtos = @search.order("produtos.id").scoped.paginate(:page => params[:page], :per_page=>20)
 	end
 	@grupos=Grupo.order("descricao").scoped
-	@grupos=Produto.find_by_marca(params[:search][:find_by_marca]).group_by(&:grupo) unless params[:search][:find_by_marca].empty?
+#	@grupos=Produto.find_by_marca(params[:search][:find_by_marca]).group_by(&:grupo) unless params[:search][:find_by_marca].empty?
   
   respond_to do |format|
       format.html # index.html.erb
