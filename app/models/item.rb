@@ -1,7 +1,7 @@
 class Item < ActiveRecord::Base
 
-	after_find :get_parecer_mumps
-	before_save :set_parecer_mumps
+#	after_find :get_parecer_mumps
+#	before_save :set_parecer_mumps
 
 	belongs_to :produto
 	belongs_to :marca
@@ -22,8 +22,13 @@ class Item < ActiveRecord::Base
 	end
 
 	def parecer_mumps
+
+	return self.parecer
+
 		begin
+		
 #			logger.info("####################### before_update :get_mumps")
+#			return self.parecer
 			ret=ControllerConsomewsghc::wsghc(	:id=>15,
 															:param=>"2^#{self.produto_id}^#{self.marca_id}^#{self.parecer_id}")
 

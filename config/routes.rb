@@ -1,8 +1,10 @@
 Gerestoque::Application.routes.draw do
 
   resources :grupos
-  resources :produtos
-  resources :items
+
+  resources :produtos do
+	  resources :items
+  end
 
   resources :parecers
   resources :sessions
@@ -17,8 +19,9 @@ Gerestoque::Application.routes.draw do
 
   match 'editais' => redirect('http://apps.ghc.com.br/gereditais'), :as=>:editais
 
-  root :to => "items#index"
-
+#  root :to => "items#index"
+  root :to => "produtos#index"
+  
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
