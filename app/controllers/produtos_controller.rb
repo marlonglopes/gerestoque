@@ -7,8 +7,6 @@ class ProdutosController < ApplicationController
   # GET /produtos.xml
   def index
 
-#	 @grupo=Grupo.find(params[:search][:grupo_id_equals]) if params[:search][:grupo_id_equals]!=""
-
 	if logged_in? and current_user.admin?
 	 @search = Produto.items.scoped.search(params[:search])
 	 @produtos = @search.order("produtos.id").scoped.paginate(:page => params[:page], :per_page=>20)
@@ -17,8 +15,9 @@ class ProdutosController < ApplicationController
 	 @produtos = @search.order("produtos.id").scoped.paginate(:page => params[:page], :per_page=>20)
 	end
 
+	@grupos=Grupo.order("descricao").scoped
+		
 	if params[:search][:find_by_marca].empty?
-		@grupos=Grupo.order("descricao").scoped
 	else
 		@grupos=Produto.find_by_marca(params[:search][:find_by_marca]).map(&:grupo).uniq!
 	end
