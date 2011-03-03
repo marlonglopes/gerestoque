@@ -29,7 +29,10 @@
 	      <%= yield %>
 		</section>
 		<br />
+
 		<%=render 'layouts/footer' %>
+		
+	<%= debug params[:search][:find_by_marca].empty?%>
 
     </div>
 

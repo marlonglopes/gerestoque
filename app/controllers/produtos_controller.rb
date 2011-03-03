@@ -16,8 +16,10 @@ class ProdutosController < ApplicationController
 	 @search = Produto.items.where("items.parecer_id = 1").scoped.search(params[:search])
 	 @produtos = @search.order("produtos.id").scoped.paginate(:page => params[:page], :per_page=>20)
 	end
-
-    respond_to do |format|
+	@grupos=Grupo.order("descricao").scoped
+	@grupos=Produto.find_by_marca(params[:search][:find_by_marca]).group_by(&:grupo) unless params[:search][:find_by_marca].empty?
+  
+  respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @produtos }
     end
