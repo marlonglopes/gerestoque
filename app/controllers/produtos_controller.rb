@@ -17,9 +17,8 @@ class ProdutosController < ApplicationController
 
 	@grupos=Grupo.order("descricao").scoped
 		
-	if params[:search][:find_by_marca].empty?
-	else
-		@grupos=Produto.find_by_marca(params[:search][:find_by_marca]).map(&:grupo).uniq!
+	if params[:search]
+				@grupos=Produto.find_by_marca(params[:search][:find_by_marca]).map(&:grupo).uniq!
 	end
 
   
